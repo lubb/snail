@@ -115,7 +115,7 @@
 <style>
     .tags {
         position: relative;
-        height: 30px;
+        height: 38px;
         overflow: hidden;
         background: #fff;
         padding-right: 120px;
@@ -135,8 +135,8 @@
         font-size: 12px;
         overflow: hidden;
         cursor: pointer;
-        height: 23px;
-        line-height: 23px;
+        height: 30px;
+        line-height: 30px;
         border: 1px solid #e9eaec;
         background: #fff;
         padding: 0 5px 0 12px;
