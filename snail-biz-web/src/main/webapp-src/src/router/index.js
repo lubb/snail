@@ -21,23 +21,8 @@ export default new Router({
                 },
                 {
                     path: '/table',
-                    component: () => import(/* webpackChunkName: "table" */ '../components/page/BaseTable.vue'),
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/user/UserList.vue'),
                     meta: { title: '基础表格' }
-                },
-                {
-                    path: '/form',
-                    component: () => import(/* webpackChunkName: "form" */ '../components/page/BaseForm.vue'),
-                    meta: { title: '基本表单' }
-                },
-                {
-                    path: '/charts',
-                    component: () => import(/* webpackChunkName: "chart" */ '../components/page/BaseCharts.vue'),
-                    meta: { title: 'schart图表' }
-                },
-                {
-                    path: '/tabs',
-                        component: () => import(/* webpackChunkName: "tabs" */ '../components/page/Tabs.vue'),
-                    meta: { title: 'tab选项卡' }
                 }
             ]
         },

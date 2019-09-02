@@ -97,8 +97,8 @@
 </template>
 
 <script>
-import { fetchData } from '../../api/index'
-import {Format} from '../../common/dateFormat'
+import { fetchData } from '../../../api'
+import {Format} from '../../../common/dateFormat'
 export default {
     name: 'basetable',
     data() {

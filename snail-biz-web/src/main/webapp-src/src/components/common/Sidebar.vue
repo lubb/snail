@@ -51,14 +51,6 @@
                             {
                                 index: '/table',
                                 title: '用户信息'
-                            },
-                            {
-                                index: '/form',
-                                title: '基本表单'
-                            },
-                            {
-                                index: '/charts',
-                                title: '统计功能'
                             }
                         ]
                     }
