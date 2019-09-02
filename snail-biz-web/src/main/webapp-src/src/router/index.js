@@ -22,7 +22,7 @@ export default new Router({
                 {
                     path: '/table',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/user/UserList.vue'),
-                    meta: { title: '基础表格' }
+                    meta: { title: '用户信息' }
                 }
             ]
         },
