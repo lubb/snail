@@ -49,7 +49,7 @@
                         title: '用户管理',
                         subs: [
                             {
-                                index: '/table',
+                                index: '/user/list',
                                 title: '用户信息'
                             }
                         ]

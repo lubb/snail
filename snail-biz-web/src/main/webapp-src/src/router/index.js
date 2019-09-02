@@ -20,7 +20,7 @@ export default new Router({
                     meta: { title: '系统首页' }
                 },
                 {
-                    path: '/table',
+                    path: '/user/list',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/user/UserList.vue'),
                     meta: { title: '用户信息' }
                 }
