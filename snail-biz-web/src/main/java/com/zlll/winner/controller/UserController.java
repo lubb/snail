@@ -39,7 +39,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 查询用户信息
+     * 查询用户信息 pageNo 页码 pageSize 页数
      * @param data
      * @return
      */
