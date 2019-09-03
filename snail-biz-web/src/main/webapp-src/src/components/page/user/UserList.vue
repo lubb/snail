@@ -1,12 +1,5 @@
 <template>
     <div>
-        <div class="crumbs">
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item>
-                    <i class="el-icon-lx-cascades"></i> 用户列表
-                </el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
         <div class="container">
             <div class="handle-box">
                 <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
@@ -153,6 +146,7 @@ export default {
             });
         },
         addUser(){
+            console.log(this.$router);
         },
         // 触发搜索按钮
         handleSearch() {
