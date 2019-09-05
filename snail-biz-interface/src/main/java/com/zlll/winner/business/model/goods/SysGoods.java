@@ -29,7 +29,22 @@ public class SysGoods implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private String name;
+    private String title;
+
+    private String img;
+
+    private Long money;
+
+    private Integer total;
+
+    private String categoryName;
+
+    private String brand;
+
+    /**
+     * 创建时间
+     */
+    private Long createTime;
 
 
 }

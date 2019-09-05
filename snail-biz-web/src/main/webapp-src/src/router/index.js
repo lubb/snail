@@ -23,6 +23,11 @@ export default new Router({
                     path: '/user/list',
                     component: () => import(/* webpackChunkName: "table" */ '../components/page/user/UserList.vue'),
                     meta: { title: '用户信息' }
+                },
+                {
+                    path: '/goods/list',
+                        component: () => import(/* webpackChunkName: "table" */ '../components/page/goods/GoodsList.vue'),
+                    meta: { title: '商品信息' }
                 }
             ]
         },

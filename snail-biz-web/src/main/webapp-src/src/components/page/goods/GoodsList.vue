@@ -1,7 +1,10 @@
 <template>
     <div class="content-wrapper">
         <el-row class="content-row">
-            <el-col class="height-init" :span="24">
+            <el-col class="height-init" :span="4">
+                <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+            </el-col>
+            <el-col class="height-init" :span="20">
                 <div class="container">
                     <el-row class="handle-box">
                         <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
@@ -24,30 +27,36 @@
                                 :data="tableData"
                                 border
                                 class="table"
-                                height="100%"
                                 ref="multipleTable"
+                                height="100%"
                                 header-cell-class-name="table-header"
                                 @selection-change="handleSelectionChange"
                         >
                             <el-table-column type="selection" width="55" align="center"></el-table-column>
                             <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-                            <el-table-column prop="userName" label="用户名"></el-table-column>
-                            <el-table-column prop="name" label="姓名"></el-table-column>
-                            <el-table-column label="头像" align="center">
+                            <el-table-column prop="title" label="标题" show-overflow-tooltip />
+                            <el-table-column prop="categoryName" label="商品分类"></el-table-column>
+                            <el-table-column prop="brand" label="商品品牌"></el-table-column>
+                            <el-table-column prop="money" label="金额">
+                                <template slot-scope="scope">
+                                    ¥{{scope.row.money}}
+                                </template>
+                            </el-table-column>
+                            <el-table-column label="商品图片" align="center">
                                 <template slot-scope="scope">
                                     <el-image
                                             class="table-td-thumb"
-                                            :src="scope.row.imgUrl"
-                                            :preview-src-list="[scope.row.imgUrl]"
+                                            :src="scope.row.img"
+                                            :preview-src-list="[scope.row.img]"
                                     ></el-image>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="createTime" label="注册时间">
+                            <el-table-column prop="createTime" label="创建时间" show-overflow-tooltip>
                                 <template slot-scope="scope" >
                                     {{renderTime(scope.row.createTime)}}
                                 </template>
                             </el-table-column>
-                            <el-table-column label="操作" width="180" align="center">
+                            <el-table-column label="操作" width="140" align="center">
                                 <template slot-scope="scope">
                                     <el-button
                                             type="text"
@@ -97,12 +106,12 @@
 </template>
 
 <script>
-import { fetchData } from '../../../api'
+import { fetchGoodsList } from '../../../api/goods'
 import {Format} from '../../../common/dateFormat'
 import bus from '../../common/bus'
 
 export default {
-    name: 'userList',
+    name: 'goodsList',
     data() {
         return {
             query: {
@@ -117,13 +126,45 @@ export default {
             pageTotal: 0,
             form: {},
             idx: -1,
-            id: -1
+            id: -1,
+            data: [{
+                label: '中国',
+                children: [
+                    {
+                        label: '广东省',
+                        children: [
+                            {
+                                label: '广州市'
+                            },{
+                                label: '深圳市'
+                            }
+                        ]
+                    },
+                    {
+                        label: '江西省',
+                        children: [
+                            {
+                                label: '九江市'
+                            },{
+                                label: '南昌市'
+                            }
+                        ]
+                    }
+                ]
+            }],
+            defaultProps: {
+                children: 'children',
+                label: 'label'
+            }
         };
     },
     created() {
         this.getData();
     },
     methods: {
+        handleNodeClick(data) {
+            console.log(data);
+        },
         /**
          * 时间格式化
          * @param time
@@ -148,7 +189,7 @@ export default {
          * 获取列表
          */
         getData() {
-            fetchData(this.query).then(res => {
+            fetchGoodsList(this.query).then(res => {
                 console.log(res);
                 this.tableData = res.data.records;
                 this.pageTotal = res.data.total || 50;
@@ -211,56 +252,56 @@ export default {
 
 <style scoped>
 
-    .content-wrapper{
-        height:100%;
-        overflow-y: hidden;
-    }
+.content-wrapper{
+    height:100%;
+    overflow-y: hidden;
+}
 
-    .content-row{
-        height: 100%;
-    }
+.content-row{
+    height: 100%;
+}
 
-    .height-init{
-        height: 100%;
-    }
+.height-init{
+    height: 100%;
+}
 
-    .container{
-        height: 100%;
-    }
+.container{
+    height: 100%;
+}
 
-    .handle-box {
-        height: 6.5%;
-    }
+.handle-box {
+    height: 6.5%;
+}
 
-    .handle-input {
-        width: 120px;
-        display: inline-block;
-    }
+.handle-input {
+    width: 120px;
+    display: inline-block;
+}
 
-    .list-table-row{
-        height:83%;
-    }
+.list-table-row{
+    height:83%;
+}
 
-    .table {
-        width: 100%;
-        height: 100%;
-        font-size: 14px;
-    }
-    .red {
-        color: #ff0000;
-    }
-    .mr10 {
-        margin-right: 10px;
-    }
-    .table-td-thumb {
-        display: block;
-        margin: auto;
-        width: 40px;
-        height: 40px;
-    }
-    .pagination-self{
-        height:10%;
-        text-align: right;
-        margin-top: 5px;
-    }
+.table {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+}
+.red {
+    color: #ff0000;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.table-td-thumb {
+    display: block;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+}
+.pagination-self{
+    height:10%;
+    text-align: right;
+    margin-top: 5px;
+}
 </style>

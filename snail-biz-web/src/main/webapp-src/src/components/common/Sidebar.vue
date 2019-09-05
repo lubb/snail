@@ -53,6 +53,17 @@
                                 title: '用户信息'
                             }
                         ]
+                    },
+                    {
+                        icon: 'el-icon-lx-cascades',
+                        index: '2',
+                        title: '商品管理',
+                        subs: [
+                            {
+                                index: '/goods/list',
+                                title: '商品信息'
+                            }
+                        ]
                     }
                 ]
             }
@@ -84,7 +95,7 @@
         width: 0;
     }
     .sidebar-el-menu:not(.el-menu--collapse){
-        width: 250px;
+        width: 180px;
     }
     .sidebar > ul {
         height:100%;
