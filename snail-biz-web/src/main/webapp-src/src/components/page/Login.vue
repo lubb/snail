@@ -49,8 +49,8 @@
                         login(this.param).then(res => {
                             console.log(res);
                             if(res.code === '0'){
+                                debugger
                                 this.$message.success('登录成功');
-                                localStorage.setItem('ms_username', this.param.userName);
                                 this.$router.push('/');
                             }else{
                                 this.$message.error(res.msg);

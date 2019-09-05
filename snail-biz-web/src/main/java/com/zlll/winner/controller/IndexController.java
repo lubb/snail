@@ -38,4 +38,11 @@ public class IndexController extends BaseController {
             return 0;
         }
     }
+
+    @RequestMapping("logout")
+    public String logout(){
+        session.removeAttribute("user");
+        session.invalidate();
+        return "redirect:login";
+    }
 }

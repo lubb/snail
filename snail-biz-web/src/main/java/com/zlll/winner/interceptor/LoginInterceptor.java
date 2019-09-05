@@ -22,6 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //        return super.preHandle(request, response, handler);
+        System.out.println(request.getRequestURI());
         if (handler instanceof HandlerMethod) {
             //注解在方法上
             LoginUser loginUserAnnotation = ((HandlerMethod) handler).getMethodAnnotation(LoginUser.class);

@@ -2,10 +2,12 @@ package com.zlll.winner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 import java.util.Calendar;
 
 @SpringBootApplication
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds=43200)
 public class SnailBizWebApplication {
 
     public static void main(String[] args) {

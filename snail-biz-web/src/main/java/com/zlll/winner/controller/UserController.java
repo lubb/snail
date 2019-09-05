@@ -2,6 +2,7 @@ package com.zlll.winner.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.zlll.winner.LoginUser;
 import com.zlll.winner.business.model.user.SysUser;
 import com.zlll.winner.business.service.user.ISysUserService;
 import com.zlll.winner.common.BaseController;
@@ -44,11 +45,13 @@ public class UserController extends BaseController {
      * @return
      */
     @PostMapping(value = "list")
+    @LoginUser
     public BaseResult page(@RequestBody JSONObject data){
         BaseResult baseResult = new BaseResult();
         Integer pageNo = data.getInteger("pageNo");
         Integer pageSize = data.getInteger("pageSize");
         SysUser user = data.toJavaObject(SysUser.class);
+        SysUser userInfo = (SysUser) session.getAttribute("user");
         IPage<SysUser> pages = userService.findUserPage(user, pageNo, pageSize);
         baseResult.setData(pages);
         return baseResult;
