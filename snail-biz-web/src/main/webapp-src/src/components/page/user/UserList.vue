@@ -67,10 +67,11 @@
                     <el-row class="pagination-self">
                         <el-pagination
                                 background
-                                layout="total, prev, pager, next"
+                                layout="total, sizes, prev, pager, next"
                                 :current-page="query.pageNo"
                                 :page-size="query.pageSize"
                                 :total="pageTotal"
+                                @size-change="handleSizeChange"
                                 @current-change="handlePageChange"
                         ></el-pagination>
                     </el-row>
@@ -108,7 +109,7 @@ export default {
             query: {
                 name: '',
                 pageNo: 1,
-                pageSize: 10
+                pageSize: 20
             },
             tableData: [],
             multipleSelection: [],
@@ -204,7 +205,11 @@ export default {
         handlePageChange(val) {
             this.$set(this.query, 'pageNo', val);
             this.getData();
-        }
+        },
+        handleSizeChange(val) {
+            this.$set(this.query, 'pageSize', val);
+            this.getData();
+        },
     }
 };
 </script>
