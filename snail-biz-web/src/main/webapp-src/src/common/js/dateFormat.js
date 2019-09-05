@@ -36,3 +36,19 @@ export function parseDate(dateStr,fmt){
 
   return new Date(year,month,day,hour,minute,second);
 }
+
+export function renderTime(time) {
+  Date.prototype.Format = Format;
+  if(time){
+    time = time.toString();
+    if(time.length === 10){
+      time = (time-0) * 1000;
+    }
+    time = (time - 0);
+    if (time) {
+      return (new Date(time)).Format("yyyy-MM-dd hh:mm:ss");
+    } else {
+      return "--";
+    }
+  }
+}

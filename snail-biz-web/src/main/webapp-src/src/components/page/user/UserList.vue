@@ -99,8 +99,7 @@
 
 <script>
 import { fetchData } from '../../../api/user'
-import {Format} from '../../../common/dateFormat'
-import bus from '../../common/bus'
+import { renderTime,renderTimeWithOutYear,renderTimeNoTime } from '../../../common/js/vue-mixin'
 
 export default {
     name: 'userList',
@@ -125,26 +124,6 @@ export default {
         this.getData();
     },
     methods: {
-        /**
-         * 时间格式化
-         * @param time
-         * @returns {string|*}
-         */
-        renderTime(time) {
-            Date.prototype.Format = Format;
-            if(time){
-                time = time.toString();
-                if(time.length === 10){
-                    time = (time-0) * 1000;
-                }
-                time = (time - 0);
-                if (time) {
-                    return (new Date(time)).Format("yyyy-MM-dd hh:mm:ss");
-                } else {
-                    return "--";
-                }
-            }
-        },
         /**
          * 获取列表
          */

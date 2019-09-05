@@ -108,8 +108,7 @@
 
 <script>
 import { fetchGoodsList } from '../../../api/goods'
-import {Format} from '../../../common/dateFormat'
-import bus from '../../common/bus'
+import { renderTime,renderTimeWithOutYear,renderTimeNoTime } from '../../../common/js/vue-mixin'
 
 export default {
     name: 'goodsList',
@@ -165,26 +164,6 @@ export default {
     methods: {
         handleNodeClick(data) {
             console.log(data);
-        },
-        /**
-         * 时间格式化
-         * @param time
-         * @returns {string|*}
-         */
-        renderTime(time) {
-            Date.prototype.Format = Format;
-            if(time){
-                time = time.toString();
-                if(time.length === 10){
-                    time = (time-0) * 1000;
-                }
-                time = (time - 0);
-                if (time) {
-                    return (new Date(time)).Format("yyyy-MM-dd hh:mm:ss");
-                } else {
-                    return "--";
-                }
-            }
         },
         /**
          * 获取列表
