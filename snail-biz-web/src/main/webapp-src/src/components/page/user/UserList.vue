@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import { fetchData } from '../../../api'
+import { fetchData } from '../../../api/user'
 import {Format} from '../../../common/dateFormat'
 import bus from '../../common/bus'
 

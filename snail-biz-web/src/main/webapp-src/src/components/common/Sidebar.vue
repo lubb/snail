@@ -55,7 +55,7 @@
                         ]
                     },
                     {
-                        icon: 'el-icon-lx-cascades',
+                        icon: 'el-icon-lx-settings',
                         index: '2',
                         title: '商品管理',
                         subs: [

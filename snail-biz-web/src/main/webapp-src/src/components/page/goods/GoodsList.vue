@@ -1,10 +1,10 @@
 <template>
     <div class="content-wrapper">
         <el-row class="content-row">
-            <el-col class="height-init" :span="4">
+            <el-col class="height-init" :span="3">
                 <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
             </el-col>
-            <el-col class="height-init" :span="20">
+            <el-col class="height-init" :span="21">
                 <div class="container">
                     <el-row class="handle-box">
                         <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
