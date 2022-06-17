@@ -28,7 +28,7 @@
         <freemarker.version>2.3.28</freemarker.version>
         <mybatis-plus-support>2.3</mybatis-plus-support>
         <druid.version>1.1.12</druid.version>
-        <fastjson.version>1.2.55</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <repositories>
